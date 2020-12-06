@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/github.io/meeting_v1/static/css/main.6c5cb499.chunk.css",
+    "main.js": "/github.io/meeting_v1/static/js/main.2aee869f.chunk.js",
+    "main.js.map": "/github.io/meeting_v1/static/js/main.2aee869f.chunk.js.map",
+    "runtime-main.js": "/github.io/meeting_v1/static/js/runtime-main.b8cb5ed0.js",
+    "runtime-main.js.map": "/github.io/meeting_v1/static/js/runtime-main.b8cb5ed0.js.map",
+    "static/js/2.8b3ce820.chunk.js": "/github.io/meeting_v1/static/js/2.8b3ce820.chunk.js",
+    "static/js/2.8b3ce820.chunk.js.map": "/github.io/meeting_v1/static/js/2.8b3ce820.chunk.js.map",
+    "static/js/3.100ba8ce.chunk.js": "/github.io/meeting_v1/static/js/3.100ba8ce.chunk.js",
+    "static/js/3.100ba8ce.chunk.js.map": "/github.io/meeting_v1/static/js/3.100ba8ce.chunk.js.map",
+    "index.html": "/github.io/meeting_v1/index.html",
+    "static/css/main.6c5cb499.chunk.css.map": "/github.io/meeting_v1/static/css/main.6c5cb499.chunk.css.map",
+    "static/js/2.8b3ce820.chunk.js.LICENSE.txt": "/github.io/meeting_v1/static/js/2.8b3ce820.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.b8cb5ed0.js",
+    "static/js/2.8b3ce820.chunk.js",
+    "static/css/main.6c5cb499.chunk.css",
+    "static/js/main.2aee869f.chunk.js"
+  ]
+}
