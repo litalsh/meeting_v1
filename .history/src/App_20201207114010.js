@@ -104,7 +104,7 @@ const App = () => {
 
   return (
     <div className="container">
-      <h4>ctrl+shift+x : Removes current stack  |  Double click or ctrl+m : Moves task between lists</h4>
+      <h4>ctrl+shift+x : Removes current stack | Double click or ctrl+m : Moves task between lists</h4>
       <div className="current-task">
         <h1>{stack[0] !== undefined ? stack[stack.length - 1].topic : null}</h1>
       </div>

@@ -67,13 +67,6 @@ const App = () => {
     }
   }, [stack]);
 
-  const keyboardCangeListHandler = (e) => {
-    
-    if (e.ctrlKey && e.which === 77) {
-      changeListHandler();
-    }
-  }
-
   const changeListHandler = (id, type) => {
     // move task from stack to heap
     if (type === 'stack') {
@@ -104,7 +97,6 @@ const App = () => {
 
   return (
     <div className="container">
-      <h4>ctrl+shift+x : Removes current stack  |  Double click or ctrl+m : Moves task between lists</h4>
       <div className="current-task">
         <h1>{stack[0] !== undefined ? stack[stack.length - 1].topic : null}</h1>
       </div>
@@ -117,17 +109,16 @@ const App = () => {
               <Task title={task.topic}
                 key={id}
                 remove={() => taskRemoveHandler(task.id, task.type)}
-                move={() => changeListHandler(task.id, task.type)}
-                keyboardMove={() => changeListHandler(task.id, task.type)} />
+                move={() => changeListHandler(task.id, task.type)} />
             )) : null}
           </>
         </ul>
-        <input type="text" placeholder="Add a task to stack" onKeyDown={newTaskHandler} className='stack-input'  autoFocus aria-flowto='heap-input' />
+        <input type="text" placeholder="Add a task to stack" onKeyDown={newTaskHandler} className='stack-input' id='stack-i' autoFocus aria-flowto='heap-i' />
       </fieldset>
 
       <fieldset className="task-list">
         <legend>Heap</legend>
-        <input type="text" placeholder="Add a task to heap" onKeyDown={newHeapHandler} className='heap-input'  aria-flowto='stack-input' />
+        <input type="text" placeholder="Add a task to heap" onKeyDown={newHeapHandler} className='heap-input' id='heap-i' aria-flowto='stack-i' />
         <ul>
           <>
             {console.log('2', heap)}
@@ -135,8 +126,7 @@ const App = () => {
               <Task title={task.topic}
                 key={id}
                 remove={() => taskRemoveHandler(task.id, task.type)}
-                move={() => changeListHandler(task.id, task.type)}
-                keyboardMove={() => changeListHandler(task.id, task.type)} />
+                move={() => changeListHandler(task.id, task.type)} />
             )) : null}
           </>
         </ul>

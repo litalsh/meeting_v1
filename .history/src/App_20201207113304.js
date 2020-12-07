@@ -104,7 +104,6 @@ const App = () => {
 
   return (
     <div className="container">
-      <h4>ctrl+shift+x : Removes current stack  |  Double click or ctrl+m : Moves task between lists</h4>
       <div className="current-task">
         <h1>{stack[0] !== undefined ? stack[stack.length - 1].topic : null}</h1>
       </div>
@@ -135,8 +134,7 @@ const App = () => {
               <Task title={task.topic}
                 key={id}
                 remove={() => taskRemoveHandler(task.id, task.type)}
-                move={() => changeListHandler(task.id, task.type)}
-                keyboardMove={() => changeListHandler(task.id, task.type)} />
+                move={() => changeListHandler(task.id, task.type)} />
             )) : null}
           </>
         </ul>
