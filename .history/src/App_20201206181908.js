@@ -7,6 +7,8 @@ const App = () => {
   const [stack, setStack] = useState([]);
   const [heap, setHeap] = useState([]);
 
+  //let checkedClass = '';
+
   const newTaskHandler = (event) => {
     if (event.which === 13) {
       setStack([
@@ -26,6 +28,29 @@ const App = () => {
       event.target.value = '';
     };
   };
+
+  // const taskCompleteHandler = (id) => {
+  //   const taskIndex = stack.findIndex(task => {
+  //     return task.id === id;
+  //   });
+
+  //   let tempStack = [...stack];
+  //   if(tempStack[taskIndex].isDone === false) {
+  //     tempStack[taskIndex].isDone = true;
+  //     checkedClass = 'checked';
+  //     // if(tempStack.length > 1) {
+  //     //   tempStack[tempStack.length] = tempStack[taskIndex];
+  //     //   tempStack.splice(tempStack[taskIndex], 1)
+  //     // }
+  //     console.log('if false')
+  //   } else {
+  //     tempStack[taskIndex].isDone = false;
+  //     checkedClass = '';
+  //     console.log('if true')
+  //   } 
+  //   setStack(tempStack);
+  //   return console.log('taskCompleteHandler: ' , stack);
+  // }
 
   const taskRemoveHandler = (id, type) => {
     if(type === 'stack'){

@@ -2,7 +2,7 @@
   "name": "meeting-v1",
   "version": "0.1.0",
   "private": true,
-  "homepage": " https://litalsh.github.io/meeting_v1/",
+  "homepage": "https://litalsh.github.io/deploy_meeting_v1",
   "dependencies": {
     "@testing-library/jest-dom": "^5.11.6",
     "@testing-library/react": "^11.2.2",
