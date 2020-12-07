@@ -8,7 +8,7 @@ const App = () => {
   const [heap, setHeap] = useState([]);
 
   const newTaskHandler = (event) => {
-    if (event.which === 13 && event.target.value !== '') {
+    if (event.which === 13) {
       setStack([
         ...stack,
         { id: uuidv4(), type: 'stack', topic: event.target.value, isDone: false }
@@ -18,7 +18,8 @@ const App = () => {
   };
 
   const newHeapHandler = (event) => {
-    if (event.which === 13 && event.target.value !== '') {
+    if (event.which === 13) {
+      console.log(event.value.target);
       setHeap([
         ...heap,
         { id: uuidv4(), type: 'heap', topic: event.target.value, isDone: false }
@@ -104,7 +105,7 @@ const App = () => {
 
   return (
     <div className="container">
-      <h4>Ctrl+Shift+x: Removes current stack  |  Double click: Moves the task between lists</h4>
+      <h4>Ctrl+Shift+x : Removes current stack  |  Double click : Moves task between lists</h4>
       <div className="current-task">
         <h1>{stack[0] !== undefined ? stack[stack.length - 1].topic : null}</h1>
       </div>

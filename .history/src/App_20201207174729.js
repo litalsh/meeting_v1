@@ -8,7 +8,7 @@ const App = () => {
   const [heap, setHeap] = useState([]);
 
   const newTaskHandler = (event) => {
-    if (event.which === 13 && event.target.value !== '') {
+    if (event.which === 13) {
       setStack([
         ...stack,
         { id: uuidv4(), type: 'stack', topic: event.target.value, isDone: false }
@@ -18,30 +18,32 @@ const App = () => {
   };
 
   const newHeapHandler = (event) => {
-    if (event.which === 13 && event.target.value !== '') {
-      setHeap([
-        ...heap,
-        { id: uuidv4(), type: 'heap', topic: event.target.value, isDone: false }
-      ]);
-      event.target.value = '';
+    if (event.which === 13) {
+      if (event.target.value !== '') {
+        setHeap([
+          ...heap,
+          { id: uuidv4(), type: 'heap', topic: event.target.value, isDone: false }
+        ]);
+        event.target.value = '';
+      };
     };
   };
 
   const taskRemoveHandler = (id, type) => {
-    if(type === 'stack'){
-    const taskIndex = stack.findIndex(task => {
-      return task.id === id;
-    });
+    if (type === 'stack') {
+      const taskIndex = stack.findIndex(task => {
+        return task.id === id;
+      });
 
-    let tempList = [...stack];
-    tempList.splice(tempList[taskIndex], 1);
-    setStack(tempList)
-  };
-    if(type === 'heap'){
+      let tempList = [...stack];
+      tempList.splice(tempList[taskIndex], 1);
+      setStack(tempList)
+    };
+    if (type === 'heap') {
       const taskIndex = heap.findIndex(task => {
         return task.id === id;
       });
-  
+
       let tempList = [...heap];
       tempList.splice(tempList[taskIndex], 1);
       setHeap(tempList)
@@ -51,7 +53,7 @@ const App = () => {
   }
 
   const keyboardRemoveHandler = (e) => {
-    
+
     if (e.ctrlKey && e.shiftKey && e.which === 88) {
       let tempStack = [...stack];
       tempStack.splice(tempStack.length - 1, 1);
@@ -59,7 +61,7 @@ const App = () => {
     }
   }
   useEffect(() => {
-    if (document){
+    if (document) {
       document.addEventListener('keydown', keyboardRemoveHandler);
     }
     return () => {
@@ -68,7 +70,7 @@ const App = () => {
   }, [stack]);
 
   // const keyboardCangeListHandler = (e, id, type) => {
-    
+
   //   if (e.ctrlKey && e.which === 77) {
   //     changeListHandler(id, type);
   //   }
@@ -104,12 +106,12 @@ const App = () => {
 
   return (
     <div className="container">
-      <h4>Ctrl+Shift+x: Removes current stack  |  Double click: Moves the task between lists</h4>
+      <h4>Ctrl+Shift+x : Removes current stack  |  Double click : Moves task between lists</h4>
       <div className="current-task">
         <h1>{stack[0] !== undefined ? stack[stack.length - 1].topic : null}</h1>
       </div>
       <fieldset className="task-list">
-      <legend>Stack</legend>
+        <legend>Stack</legend>
         <ul>
           <>
             {console.log('1', stack)}
@@ -118,16 +120,16 @@ const App = () => {
                 key={id}
                 remove={() => taskRemoveHandler(task.id, task.type)}
                 move={() => changeListHandler(task.id, task.type)}
-                 />
+              />
             )) : null}
           </>
         </ul>
-        <input type="text" placeholder="Add a task to stack" onKeyDown={newTaskHandler} className='stack-input'  autoFocus aria-flowto='heap-input' />
+        <input type="text" placeholder="Add a task to stack" onKeyDown={newTaskHandler} className='stack-input' autoFocus aria-flowto='heap-input' />
       </fieldset>
 
       <fieldset className="task-list">
         <legend>Heap</legend>
-        <input type="text" placeholder="Add a task to heap" onKeyDown={newHeapHandler} className='heap-input'  aria-flowto='stack-input' />
+        <input type="text" placeholder="Add a task to heap" onKeyDown={newHeapHandler} className='heap-input' aria-flowto='stack-input' />
         <ul>
           <>
             {console.log('2', heap)}
@@ -135,7 +137,7 @@ const App = () => {
               <Task title={task.topic}
                 key={id}
                 remove={() => taskRemoveHandler(task.id, task.type)}
-                move={() => changeListHandler(task.id, task.type)}/>
+                move={() => changeListHandler(task.id, task.type)} />
             )) : null}
           </>
         </ul>
