@@ -1,0 +1,20 @@
+import React from "react";
+import "./App.css";
+
+const task = (props) => {
+  
+  const keyboardMoveHandler = (e) => {
+    let move = props.move;
+    if(e.ctrlKey && e.which === 77) {
+      move;
+    }
+  }
+
+  return(
+  <li className="task_item"  key={props.id} onDoubleClick={keyboardMoveHandler}>
+    <label className={props.checked}>{props.title}</label>
+    <button className="remove" onClick={props.remove} onKeyDown={props.move} >X</button>
+  </li>
+)};
+
+export default task;

@@ -67,12 +67,12 @@ const App = () => {
     }
   }, [stack]);
 
-  // const keyboardCangeListHandler = (e, id, type) => {
+  const keyboardCangeListHandler = (e) => {
     
-  //   if (e.ctrlKey && e.which === 77) {
-  //     changeListHandler(id, type);
-  //   }
-  // }
+    if (e.ctrlKey && e.which === 77) {
+      changeListHandler(id, type);
+    }
+  }
 
   const changeListHandler = (id, type) => {
     // move task from stack to heap
@@ -104,7 +104,7 @@ const App = () => {
 
   return (
     <div className="container">
-      <h4>Ctrl+Shift+x : Removes current stack  |  Double click : Moves task between lists</h4>
+      <h4>ctrl+shift+x : Removes current stack  |  Double click or ctrl+m : Moves task between lists</h4>
       <div className="current-task">
         <h1>{stack[0] !== undefined ? stack[stack.length - 1].topic : null}</h1>
       </div>
@@ -114,11 +114,13 @@ const App = () => {
           <>
             {console.log('1', stack)}
             {stack[0] !== undefined ? stack.map((task, id) => (
+              <div onKeyDown={() => changeListHandler(task.id, task.type)} key={id}>
               <Task title={task.topic}
                 key={id}
                 remove={() => taskRemoveHandler(task.id, task.type)}
                 move={() => changeListHandler(task.id, task.type)}
                  />
+                </div>
             )) : null}
           </>
         </ul>
@@ -135,7 +137,8 @@ const App = () => {
               <Task title={task.topic}
                 key={id}
                 remove={() => taskRemoveHandler(task.id, task.type)}
-                move={() => changeListHandler(task.id, task.type)}/>
+                move={() => changeListHandler(task.id, task.type)}
+                keyboardMove={keyboardCangeListHandler} />
             )) : null}
           </>
         </ul>

@@ -1,0 +1,20 @@
+import React from "react";
+import "./App.css";
+import App from "./App";
+
+const task = (props) => {
+  const keyboardCangeListHandler = (e) => {
+    
+    if (e.ctrlKey && e.which === 77) {
+      App.changeListHandler(id, type)
+    }
+  }
+
+  return(
+  <li className="task_item"  key={props.id} onDoubleClick={props.move}>
+    <label className={props.checked}>{props.title}</label>
+    <button className="remove" onClick={props.remove} onKeyDown={keyboardCangeListHandler}>X</button>
+  </li>
+)};
+
+export default task;
