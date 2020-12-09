@@ -108,7 +108,7 @@ const App = () => {
       <div className="current-task">
         <h1>{stack[0] !== undefined ? stack[stack.length - 1].topic : null}</h1>
       </div>
-      <fieldset className="task-list stack-list">
+      <fieldset className="task-list">
       <legend>Stack</legend>
         <ul>
           <>

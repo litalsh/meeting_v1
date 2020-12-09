@@ -108,7 +108,7 @@ const App = () => {
       <div className="current-task">
         <h1>{stack[0] !== undefined ? stack[stack.length - 1].topic : null}</h1>
       </div>
-      <fieldset className="task-list stack-list">
+      <fieldset className="task-list">
       <legend>Stack</legend>
         <ul>
           <>
@@ -118,7 +118,7 @@ const App = () => {
                 key={id}
                 remove={() => taskRemoveHandler(task.id, task.type)}
                 move={() => changeListHandler(task.id, task.type)}
-                class={"stack_item"}
+                class={"stack-list"}
                  />
             )) : null}
           </>
@@ -137,7 +137,7 @@ const App = () => {
                 key={id}
                 remove={() => taskRemoveHandler(task.id, task.type)}
                 move={() => changeListHandler(task.id, task.type)}
-                class={"heap_item"}/>
+                class={"heap-list"}/>
             )) : null}
           </>
         </ul>

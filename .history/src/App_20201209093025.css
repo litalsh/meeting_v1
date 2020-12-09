@@ -9,6 +9,7 @@ h4 {
 .container {
   display: grid;
   grid-template-columns: 3fr 1fr;
+  margin: 5px;
 }
 
 .current-task {
@@ -34,11 +35,6 @@ h4 {
   padding: 5px 0;
   width: 95%;
   margin: 0 auto;
- }
-
- .stack-list ul {
-   display: flex;
-   flex-direction: column-reverse;
  }
 
  legend {
@@ -67,23 +63,13 @@ li {
   cursor: pointer;
 }
 
-.stack_item {
+.task_item {
   width: 98%;
   line-height: 40px;
   margin: 3px auto;
   position: relative;
   text-align: center;
   border-radius: 5px;
-}
-
-.heap_item {
-  width: 98%;
-  line-height: 1.8em;
-  margin: 3px auto;
-  position: relative;
-  text-align: center;
-  border-radius: 5px;
-  font-size: 1rem;
 }
 
 .stack-input {
@@ -101,12 +87,12 @@ li {
 .heap-input {
   border: 1px solid #ccc;
   width: 98%;
-  line-height: 1.8em;
+  line-height: 40px;
   margin: 5px auto;
   position: relative;
   text-align: center;
   border-radius: 5px;
-  font-size: 1rem;
+  font-size: 1.3rem;
   padding: 0;
 }
 
@@ -127,8 +113,8 @@ li {
 }
 
 .remove {
-  width: 1.5vw;
-  height: 1.5vw;
+  width: 30px;
+  height: 30px;
   position: absolute;
   top: 50%;
   right: 10px;
@@ -138,7 +124,6 @@ li {
   font-weight: bold;
   color: gray;
   cursor: pointer;
-  font-size: 0.8rem;
 }
 
  
