@@ -2,10 +2,11 @@ import React, { useState, useEffect } from "react";
 import "./App.css";
 import { v4 as uuidv4 } from "uuid";
 import Task from "./Task";
+import useLocalStorage from './useLocalStorage';
 
 const App = () => {
-  const [stack, setStack] = useState([]);
-  const [heap, setHeap] = useState([]);
+  const [stack, setStack] = useLocalStorage('stack', []);
+  const [heap, setHeap] = useLocalStorage('heap', []);
 
   const newTaskHandler = (event) => {
     if (event.which === 13 && event.target.value !== '') {
@@ -102,6 +103,11 @@ const App = () => {
     };
   }
 
+  const clearListsHandler = () => {
+    setHeap([]);
+    setStack([]);
+  }
+
   return (
     <div className="container">
       <h4>Ctrl+Shift+x: Removes current stack  |  Double click: Moves the task between lists</h4>
@@ -142,6 +148,7 @@ const App = () => {
           </>
         </ul>
       </fieldset>
+      <button className='clear-btn' onClick={() => clearListsHandler()}>Clear all</button>
     </div>
   );
 };
