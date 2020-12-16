@@ -20,12 +20,12 @@ const App = () => {
     if (event.which === 13 && event.target.value !== '') {
       setStack([
         ...stack,
-        { id: uuidv4(), type: 'stack', topic: event.target.value, duration: 5, slider: 'slider-container' }
+        { id: uuidv4(), type: 'stack', topic: event.target.value, duration: 5 , slider: 'slider-container' }
       ]);
       event.target.value = '';
       setIsRunning(false);
       console.log(stack)
-      setTimer(stack[0] !== undefined ? stack[stack.length - 1].duration * 60 : null);
+      //setTimer(stack[0] !== undefined ? stack[stack.length - 1].duration * 60 : null);
     };
   };
 
@@ -40,24 +40,24 @@ const App = () => {
   };
 
   const taskRemoveHandler = (id, type) => {
-    if (type === 'stack') {
-      const taskIndex = stack.findIndex(task => {
-        return task.id === id;
-      });
+    if(type === 'stack'){
+    const taskIndex = stack.findIndex(task => {
+      return task.id === id;
+    });
 
-      let tempList = [...stack];
-      tempList.splice(tempList[taskIndex], 1);
-      setStack(tempList);
-      if (taskIndex === stack.length - 1) {
-        setIsRunning(false);
-        setTimer(stack[stack.length - 1].duration * 60);
-      }
-    };
-    if (type === 'heap') {
+    let tempList = [...stack];
+    tempList.splice(tempList[taskIndex], 1);
+    setStack(tempList);
+    if(taskIndex === stack.length - 1 ){
+      setIsRunning(false);
+      setTimer(stack[stack.length - 1].duration * 60);
+    }
+  };
+    if(type === 'heap'){
       const taskIndex = heap.findIndex(task => {
         return task.id === id;
       });
-
+  
       let tempList = [...heap];
       tempList.splice(tempList[taskIndex], 1);
       setHeap(tempList)
@@ -72,44 +72,39 @@ const App = () => {
       tempStack.splice(tempStack.length - 1, 1);
       setStack(tempStack);
       setIsRunning(false);
-      setTimer(stack[stack.length - 2] ? stack[stack.length - 2].duration * 60 : 0);
+      setTimer(stack[stack.length - 1].duration * 60);
     }
-  }
+  } 
 
   const adjustDurationHandler = (id) => {
-    const index = stack.findIndex(task => task.id === id);
+    const index = stack.findIndex(task =>task.id === id);
     let tempStack = [...stack];
     tempStack[index].duration = parseInt(tempDuration);
 
     setStack(tempStack);
-    if (index === stack.length - 1) {
-      setTimer(stack[stack.length - 1].duration * 60);
-      console.log(stack)
-    }
+    console.log(stack)
   }
-
+  
   // start of pause timer using the keyboard
   const keyboardStartTimerHandler = (e) => {
     if (e.altKey && e.which === 83) {
-      if (!isRunning) {
-        //setTimer(stack[stack.length - 1].duration * 60);
+      if(!isRunning){
+        setTimer(stack[stack.length - 1].duration * 60);
         setIsRunning(true);
-        console.log(stack)
-      } else {
-        // let tempStack = [...stack];
-        // tempStack[tempStack.length - 1].duration = minutes + seconds / 60;
-        // setStack(tempStack);
+      }  else{
+        let tempStack = [...stack];
+        tempStack[tempStack.length - 1].duration = minutes+seconds/60;
+        setStack(tempStack);
         setIsRunning(false);
 
         console.log(stack)
-
-      }
-    }
+ 
+}    }
   }
 
   // remove from stack with the keyboard
   useEffect(() => {
-    if (document) {
+    if (document){
       document.addEventListener('keydown', keyboardRemoveHandler);
     }
     return () => {
@@ -119,20 +114,19 @@ const App = () => {
 
   // starts and stops the countdown
   useEffect(() => {
-    if (document) {
+    if (document){
       document.addEventListener('keydown', keyboardStartTimerHandler);
-      if (isRunning) {
+      if(isRunning) {
         const id = window.setInterval(() => {
-          setTimer(timer => timer - 1);
+          setTimer(timer => timer-1);
         }, 1000);
         return () => window.clearInterval(id);
       }
     }
     return () => {
       document.removeEventListener('keydown', keyboardStartTimerHandler);
-    }
+    }   
   }, [isRunning])
-
 
   const changeListHandler = (id, type) => {
     // move task from stack to heap
@@ -165,20 +159,19 @@ const App = () => {
   const clearListsHandler = () => {
     setHeap([]);
     setStack([]);
-    setTimer(0)
   }
 
   return (
     <div className="container">
       <button className='clear-btn' onClick={() => clearListsHandler()}>Clear all</button>
-      <h5 className="instructions">Ctrl+Shift+X: Removes current stack  |  Double click: Moves the task between lists  |  Alt+S: Start/stop the timer</h5>
-      {stack[0] !== undefined ? <h3 className="timer">{minutes}:{seconds}</h3> : null}
+      <h5>Ctrl+Shift+X: Removes current stack  |  Double click: Moves the task between lists  |  Alt+S: Start/stop the timer</h5>
+      {stack[0] !== undefined ?  <h3 className="timer">{minutes}:{seconds}</h3> : null}
       <div className="current-task">
         <h1>{stack[0] !== undefined ? stack[stack.length - 1].topic : null}</h1>
       </div>
       <fieldset className="task-list stack-list">
-        <legend>Stack</legend>
-        <ul className="stack-list">
+      <legend>Stack</legend>
+        <ul  className="stack-list">
           <>
             {stack[0] !== undefined ? stack.map((task, id) => (
               <Task title={task.topic}
@@ -189,17 +182,17 @@ const App = () => {
                 duration={task.duration}
                 sliderClass={task.slider}
                 sliderControl={() => adjustDurationHandler(task.id)}
-                change={value => setTeampDuration(value)}
-              />
+                change={value=>setTeampDuration(value)}
+                 />
             )) : null}
           </>
         </ul>
-        <input type="text" placeholder="Add a task to stack" onKeyDown={newTaskHandler} className='stack-input' autoFocus aria-flowto='heap-input' />
+        <input type="text" placeholder="Add a task to stack" onKeyDown={newTaskHandler} className='stack-input'  autoFocus aria-flowto='heap-input' />
       </fieldset>
 
       <fieldset className="task-list heap-list-container">
         <legend>Heap</legend>
-        <input type="text" placeholder="Add a task to heap" onKeyDown={newHeapHandler} className='heap-input' aria-flowto='stack-input' />
+        <input type="text" placeholder="Add a task to heap" onKeyDown={newHeapHandler} className='heap-input'  aria-flowto='stack-input' />
         <ul className="heap-list">
           <>
             {heap[0] !== undefined ? heap.map((task, id) => (
@@ -209,7 +202,7 @@ const App = () => {
                 move={() => changeListHandler(task.id, task.type)}
                 class={"heap_item"}
                 duration={task.duration}
-                sliderClass={task.slider} />
+                sliderClass={task.slider}/>
             )) : null}
           </>
         </ul>

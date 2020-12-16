@@ -2,12 +2,12 @@ import React from "react";
 import "./App.css";
 
 const task = (props) => {
- 
+
   return(
   <li className={props.class}  key={props.id} onDoubleClick={props.move}>
-    <div className={props.sliderClass}>
-      <span className="duration-display">{props.duration}</span>
-      <input type="range" className="show-slider" 
+    <div className="slider-container">
+      <span className="duration-input">{props.duration}</span>
+      <input type="range" className={props.slider} 
       min="1" max="20" step="1"
       defaultValue={props.duration} 
       onMouseUp={props.sliderControl} 

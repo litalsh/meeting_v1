@@ -2,7 +2,7 @@ body{
  background-color:  #eaeff4;
 }
 
-.instructions {
+h4 {
   text-align: center;
   grid-column: 2/5;
 }
@@ -99,44 +99,22 @@ li {
   position: relative;
   text-align: center;
   border-radius: 5px;
-  display: grid;
-  grid-template-columns: 1fr 3fr 1fr;
 }
 
 .heap_item {
-  display: flex;
   width: 20%;
   line-height: 1.8em;
   margin: 3px auto;
+  position: relative;
   text-align: center;
   border-radius: 5px;
   font-size: 1rem;
   min-width: 290px;
 }
 
-label {
-  margin: auto;
-}
-
-.slider-container {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  width: 100%;
-}
 
 
-.duration-display {
-  width: 20px;
-}
 
-
-input[type=range].show-slider {
-  width: 80px;
-  margin: 0 10px;
-  background-color: transparent;
-  -webkit-appearance: none;
-}
 
 .hide-slider {
   display: none;
@@ -187,15 +165,16 @@ input[type=range].show-slider {
   height: 1.5vw;
   min-width: 19px;
   min-height: 19px;
-  align-self: center;
-  margin-right: 10px;
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
   border-radius: 50%;
   border: none;
   font-weight: bold;
   color: gray;
   cursor: pointer;
   font-size: 0.8rem;
-  justify-self: end
 }
 
 .clear-btn {
@@ -211,11 +190,17 @@ input[type=range].show-slider {
   border-radius: 3px;
 }
 
+input[type=range].show-slider {
+  width: 30%;
+  margin: 5.85px 0;
+  background-color: transparent;
+  -webkit-appearance: none;
+}
 input[type=range].show-slider:focus {
   outline: none;
 }
 input[type=range].show-slider::-webkit-slider-runnable-track {
-  background: #ced3d9;
+  background: #00f0c4;
   border: 0;
   border-radius: 25px;
   width: 100%;
@@ -233,10 +218,10 @@ input[type=range].show-slider::-webkit-slider-thumb {
   -webkit-appearance: none;
 }
 input[type=range].show-slider:focus::-webkit-slider-runnable-track {
-  background: #ced3d9;
+  background: #1affd5;
 }
 input[type=range].show-slider::-moz-range-track {
-  background: #ced3d9;
+  background: #00f0c4;
   border: 0;
   border-radius: 25px;
   width: 100%;
@@ -261,12 +246,12 @@ input[type=range].show-slider::-ms-track {
   cursor: pointer;
 }
 input[type=range].show-slider::-ms-fill-lower {
-  background: #ced3d9;
+  background: #00c7a3;
   border: 0;
   border-radius: 50px;
 }
 input[type=range].show-slider::-ms-fill-upper {
-  background: #ced3d9;
+  background: #00f0c4;
   border: 0;
   border-radius: 50px;
 }
@@ -281,10 +266,10 @@ input[type=range].show-slider::-ms-thumb {
   /*Needed to keep the Edge thumb centred*/
 }
 input[type=range].show-slider:focus::-ms-fill-lower {
-  background: #ced3d9;
+  background: #00f0c4;
 }
 input[type=range].show-slider:focus::-ms-fill-upper {
-  background: #ced3d9;
+  background: #1affd5;
 }
 /*TODO: Use one of the selectors from https://stackoverflow.com/a/20541859/7077589 and figure out
 how to remove the virtical space around the range input in IE*/

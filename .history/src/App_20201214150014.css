@@ -2,7 +2,7 @@ body{
  background-color:  #eaeff4;
 }
 
-.instructions {
+h4 {
   text-align: center;
   grid-column: 2/5;
 }
@@ -99,44 +99,22 @@ li {
   position: relative;
   text-align: center;
   border-radius: 5px;
-  display: grid;
-  grid-template-columns: 1fr 3fr 1fr;
 }
 
 .heap_item {
-  display: flex;
   width: 20%;
   line-height: 1.8em;
   margin: 3px auto;
+  position: relative;
   text-align: center;
   border-radius: 5px;
   font-size: 1rem;
   min-width: 290px;
 }
 
-label {
-  margin: auto;
-}
-
-.slider-container {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  width: 100%;
-}
 
 
-.duration-display {
-  width: 20px;
-}
 
-
-input[type=range].show-slider {
-  width: 80px;
-  margin: 0 10px;
-  background-color: transparent;
-  -webkit-appearance: none;
-}
 
 .hide-slider {
   display: none;
@@ -187,15 +165,16 @@ input[type=range].show-slider {
   height: 1.5vw;
   min-width: 19px;
   min-height: 19px;
-  align-self: center;
-  margin-right: 10px;
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
   border-radius: 50%;
   border: none;
   font-weight: bold;
   color: gray;
   cursor: pointer;
   font-size: 0.8rem;
-  justify-self: end
 }
 
 .clear-btn {
@@ -211,6 +190,12 @@ input[type=range].show-slider {
   border-radius: 3px;
 }
 
+input[type=range].show-slider {
+  width: 10%;
+  margin: 5.85px 0;
+  background-color: transparent;
+  -webkit-appearance: none;
+}
 input[type=range].show-slider:focus {
   outline: none;
 }

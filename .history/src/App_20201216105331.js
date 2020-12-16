@@ -72,7 +72,7 @@ const App = () => {
       tempStack.splice(tempStack.length - 1, 1);
       setStack(tempStack);
       setIsRunning(false);
-      setTimer(stack[stack.length - 2] ? stack[stack.length - 2].duration * 60 : 0);
+      setTimer(stack[stack.length - 1].duration * 60);
     }
   }
 
@@ -133,7 +133,7 @@ const App = () => {
     }
   }, [isRunning])
 
-
+  
   const changeListHandler = (id, type) => {
     // move task from stack to heap
     if (type === 'stack') {

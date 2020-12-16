@@ -2,7 +2,7 @@ body{
  background-color:  #eaeff4;
 }
 
-.instructions {
+h4 {
   text-align: center;
   grid-column: 2/5;
 }
@@ -99,40 +99,38 @@ li {
   position: relative;
   text-align: center;
   border-radius: 5px;
-  display: grid;
-  grid-template-columns: 1fr 3fr 1fr;
+  display: flex;
+  justify-content: space-between;
 }
 
 .heap_item {
-  display: flex;
   width: 20%;
   line-height: 1.8em;
   margin: 3px auto;
+  position: relative;
   text-align: center;
   border-radius: 5px;
   font-size: 1rem;
   min-width: 290px;
 }
 
-label {
-  margin: auto;
-}
-
 .slider-container {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
-  width: 100%;
 }
 
 
-.duration-display {
-  width: 20px;
+.duration-input {
+  width: 35px;
+  text-align: center;
+  height: 15px;
+  align-self: center;
 }
 
 
 input[type=range].show-slider {
-  width: 80px;
+  width: 30px;
   margin: 0 10px;
   background-color: transparent;
   -webkit-appearance: none;
@@ -195,7 +193,6 @@ input[type=range].show-slider {
   color: gray;
   cursor: pointer;
   font-size: 0.8rem;
-  justify-self: end
 }
 
 .clear-btn {

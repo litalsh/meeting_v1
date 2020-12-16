@@ -25,7 +25,7 @@ const App = () => {
       event.target.value = '';
       setIsRunning(false);
       console.log(stack)
-      setTimer(stack[0] !== undefined ? stack[stack.length - 1].duration * 60 : null);
+      if(timer === 0) {setTimer(stack[stack.length - 1].duration * 60)};
     };
   };
 
@@ -72,7 +72,7 @@ const App = () => {
       tempStack.splice(tempStack.length - 1, 1);
       setStack(tempStack);
       setIsRunning(false);
-      setTimer(stack[stack.length - 2] ? stack[stack.length - 2].duration * 60 : 0);
+      setTimer(stack[stack.length - 1].duration * 60);
     }
   }
 
@@ -92,13 +92,12 @@ const App = () => {
   const keyboardStartTimerHandler = (e) => {
     if (e.altKey && e.which === 83) {
       if (!isRunning) {
-        //setTimer(stack[stack.length - 1].duration * 60);
+        setTimer(stack[stack.length - 1].duration * 60);
         setIsRunning(true);
-        console.log(stack)
       } else {
-        // let tempStack = [...stack];
-        // tempStack[tempStack.length - 1].duration = minutes + seconds / 60;
-        // setStack(tempStack);
+        let tempStack = [...stack];
+        tempStack[tempStack.length - 1].duration = minutes + seconds / 60;
+        setStack(tempStack);
         setIsRunning(false);
 
         console.log(stack)
@@ -132,7 +131,6 @@ const App = () => {
       document.removeEventListener('keydown', keyboardStartTimerHandler);
     }
   }, [isRunning])
-
 
   const changeListHandler = (id, type) => {
     // move task from stack to heap

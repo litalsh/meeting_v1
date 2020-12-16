@@ -2,7 +2,7 @@ import React from "react";
 import "./App.css";
 
 const task = (props) => {
- 
+
   return(
   <li className={props.class}  key={props.id} onDoubleClick={props.move}>
     <div className={props.sliderClass}>
