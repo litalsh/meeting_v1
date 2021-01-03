@@ -50,7 +50,7 @@ const App = () => {
       });
 
       let tempList = [...stack];
-      tempList.splice(taskIndex, 1);
+      tempList.splice(tempList[taskIndex], 1);
       setStack(tempList);
       console.log(taskIndex)
       if (taskIndex === stack.length - 1) {
@@ -64,7 +64,7 @@ const App = () => {
       });
 
       let tempList = [...heap];
-      tempList.splice(taskIndex, 1);
+      tempList.splice(tempList[taskIndex], 1);
       setHeap(tempList)
       console.log(taskIndex)
     };

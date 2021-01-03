@@ -64,7 +64,7 @@ const App = () => {
       });
 
       let tempList = [...heap];
-      tempList.splice(taskIndex, 1);
+      tempList.splice(taskIndex], 1);
       setHeap(tempList)
       console.log(taskIndex)
     };

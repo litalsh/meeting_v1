@@ -48,15 +48,16 @@ const App = () => {
       const taskIndex = stack.findIndex(task => {
         return task.id === id;
       });
-
-      let tempList = [...stack];
-      tempList.splice(taskIndex, 1);
-      setStack(tempList);
-      console.log(taskIndex)
-      if (taskIndex === stack.length - 1) {
-        setIsRunning(false);
-        setTimer(stack[stack.length - 1].duration * 60);
-      }
+      useEffect(() => {
+        let tempList = [...stack];
+        tempList.splice(tempList[taskIndex], 1);
+        setStack(tempList);
+      })
+      
+      // if (taskIndex === stack.length - 1) {
+      //   setIsRunning(false);
+      //   setTimer(stack[stack.length - 1].duration * 60);
+      // }
     };
     if (type === 'heap') {
       const taskIndex = heap.findIndex(task => {
@@ -64,9 +65,8 @@ const App = () => {
       });
 
       let tempList = [...heap];
-      tempList.splice(taskIndex, 1);
+      tempList.splice(tempList[taskIndex], 1);
       setHeap(tempList)
-      console.log(taskIndex)
     };
     return console.log('taskRmoveHandler: ', stack);
 
